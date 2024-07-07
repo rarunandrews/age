@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container" id="container">
+    
+    <h1>
+        <span id="bigDigits"></span><span id="smallDigits"></span>
+    </h1>
+</div>
+
+<script>
+    // Function to calculate age in years
+    function calculateAge(birthDate) {
+        var currentDate = new Date();
+        var ageMilliseconds = currentDate - birthDate;
+        var ageInSeconds = ageMilliseconds / 1000;
+        var ageInYears = ageInSeconds / (60 * 60 * 24 * 365.25); 
+        return ageInYears;
+    }
+
+    // Function to update the displayed age
+    function updateAge() {
+        var birthDate = new Date('1999-11-25'); 
+        var age = calculateAge(birthDate);
+        var ageString = age.toFixed(12); 
+        var bigDigits = ageString.slice(0, 2); 
+        var smallDigits = ageString.slice(2); 
+
+        document.getElementById('bigDigits').textContent = bigDigits; 
+        document.getElementById('smallDigits').textContent = smallDigits; 
+    }
+
+    
+    updateAge();
+    setInterval(updateAge, 30);
+</script>
+</body>
+</html>
+
